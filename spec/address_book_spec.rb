@@ -56,13 +56,27 @@ RSpec.describe AddressBook do
 
       book.remove_entry('Oleg Sokolov', '012.345.6789', 'ole.sokolov@lovelace.com')
       expect(book.entries.size).to eq(1)
-      
+
       new_entry = book.entries[0]
 
       expect(new_entry.name).to eq('Ada Lovelace')
       expect(new_entry.phone_number).to eq('010.012.1815')
       expect(new_entry.email).to eq('augusta.king@lovelace.com')
 
+    end
+  end
+
+  describe "#get_entry_by_number" do
+    it "get entry by number" do
+      book = AddressBook.new
+      book.add_entry('Oleg Sokolov', '012.345.6789', 'ole.sokolov@lovelace.com')
+      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      expect(book.entries.size).to eq(2)
+
+      entry = book.get_entry_by_number(1)
+      expect(entry.name).to eq('Ada Lovelace')
+      expect(entry.phone_number).to eq('010.012.1815')
+      expect(entry.email).to eq('augusta.king@lovelace.com')
     end
   end
 end

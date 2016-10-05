@@ -7,8 +7,6 @@ class Entry
   end
 
   def print
-    puts "Name: " + @name
-    puts "Phone: " + @phone_number
-    puts "Email: " + @email
+    "Name: " + @name + "; Phone: " + @phone_number + "; Email: " + @email    
   end
 end

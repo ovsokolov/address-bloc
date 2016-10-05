@@ -15,8 +15,9 @@
      puts "1 - View all entries"
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
-     puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "4 - View entry number n"
+     puts "5 - Import entries from a CSV"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # #3
@@ -37,9 +38,12 @@
             main_menu
           when 4
             system "clear"
+            search_entries_by_number
+          when 5
+            system "clear"
             read_csv
             main_menu
-          when 5
+          when 6
             puts "Good-bye!"
             # #8
             exit(0)
@@ -80,6 +84,18 @@
     end
 
     def search_entries
+    end
+
+    def search_entries_by_number
+      puts "Please provide entry number:"
+      entry_number = gets.to_i
+      if entry_number > address_book.entries.length || entry_number < 1
+        system "clear"
+        puts "Invalid entry"
+        search_entries_by_number
+      end
+      puts address_book.get_entry_by_number(entry_number -1).print
+      main_menu
     end
 
     def read_csv

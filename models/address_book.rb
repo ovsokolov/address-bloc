@@ -28,4 +28,8 @@ class AddressBook
       end
       entries.delete_at(index)
   end
+
+  def get_entry_by_number(entry_number)
+    return entries[entry_number-1]
+  end
 end

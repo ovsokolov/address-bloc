@@ -67,6 +67,20 @@ RSpec.describe AddressBook do
     end
   end
 
+  describe "#remove_all_entry" do
+    it "removes all entries from address book" do
+      book.import_from_csv("entries.csv")
+      book_size = book.entries.size
+
+      # Check the size of the entries in AddressBook
+      expect(book_size).to eq 5
+
+      book.remove_all_entry
+      book_size = book.entries.size
+      expect(book_size).to eq 0
+    end
+  end
+
   describe "#get_entry_by_number" do
     it "get correct entry by number" do
       book.add_entry('Oleg Sokolov', '012.345.6789', 'ole.sokolov@lovelace.com')

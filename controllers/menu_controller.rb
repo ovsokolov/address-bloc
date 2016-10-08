@@ -17,7 +17,8 @@
      puts "3 - Search for an entry"
      puts "4 - View entry number n"
      puts "5 - Import entries from a CSV"
-     puts "6 - Exit"
+     puts "6 - Nuke (delete all entries)"
+     puts "7 - Exit"
      print "Enter your selection: "
 
      # #3
@@ -44,6 +45,10 @@
             read_csv
             main_menu
           when 6
+            system "clear"
+            delete_all
+            main_menu
+          when 7
             puts "Good-bye!"
             # #8
             exit(0)
@@ -161,6 +166,10 @@
         puts "#{entry.name} has been deleted"
     end
 
+    def delete_all()
+      address_book.remove_all_entry
+    end
+
     def edit_entry(entry)
       # #4
       print "Updated name: "
@@ -186,7 +195,7 @@
       puts "m - return to main menu"
 
       selection = gets.chomp
-  
+
       case selection
         when "d"
           system "clear"
